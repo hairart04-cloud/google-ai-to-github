@@ -1,0 +1,86 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["user", "admin"] }
+      },
+      "required": ["uid", "email", "displayName", "role"]
+    },
+    "Reservation": {
+      "title": "Reservation",
+      "description": "Bike maintenance or rental reservation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userPhone": { "type": "string" },
+        "reservationType": { "type": "string" },
+        "bikeModel": { "type": "string" },
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "approved", "completed", "cancelled"] },
+        "details": { "type": "string" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["id", "userName", "userPhone", "reservationType", "date", "time", "status", "createdAt"]
+    },
+    "Inquiry": {
+      "title": "Inquiry",
+      "description": "Franchise or partnership inquiry",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "region": { "type": "string" },
+        "content": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "reviewed", "completed"] },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["id", "name", "phone", "region", "content", "status", "createdAt"]
+    },
+    "RiderApplication": {
+      "title": "RiderApplication",
+      "description": "Delivery rider employment application",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "age": { "type": "number" },
+        "region": { "type": "string" },
+        "experience": { "type": "string" },
+        "hasLicense": { "type": "boolean" },
+        "status": { "type": "string", "enum": ["pending", "reviewed", "completed"] },
+        "attachmentName": { "type": "string" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["id", "name", "phone", "age", "region", "experience", "hasLicense", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "reservations/{reservationId}": {
+      "schema": "Reservation",
+      "description": "Reservations for maintenance or rentals"
+    },
+    "inquiries/{inquiryId}": {
+      "schema": "Inquiry",
+      "description": "Franchise online inquiries"
+    },
+    "rider_applications/{applicationId}": {
+      "schema": "RiderApplication",
+      "description": "Rider recruitment applications"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "LAVACORE MOBILITY",
+  "description": "배달대행 플랫폼 연계, 오토바이 정비 및 이누리 전기 바이크 렌탈과 라이더 구인구직 통합 웹사이트",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

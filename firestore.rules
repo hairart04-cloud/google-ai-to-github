@@ -1,0 +1,152 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 1. Global Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- HELPER FUNCTIONS ---
+
+    // Identity check
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Admin role check: either the bootstrapped email or role is admin in database
+    function isAdmin() {
+      return isSignedIn() && (
+        request.auth.token.email == 'hairart04@gmail.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+      );
+    }
+
+    // ID validation to guard against junk strings
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Helper functions for data access
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // --- SCHEMAS VALIDATION HELPERS ---
+
+    function isValidUser(data) {
+      return data.keys().hasAll(['uid', 'email', 'displayName', 'role'])
+        && data.keys().size() == 4
+        && data.uid is string && data.uid.size() <= 128
+        && data.email is string && data.email.size() <= 128
+        && data.displayName is string && data.displayName.size() <= 100
+        && data.role is string && (data.role == 'user' || data.role == 'admin');
+    }
+
+    function isValidReservation(data) {
+      return data.userName is string && data.userName.size() <= 100
+        && data.userPhone is string && data.userPhone.size() <= 100
+        && data.reservationType is string && (data.reservationType == 'visit' || data.reservationType == 'maintenance' || data.reservationType == 'rental')
+        && data.date is string && data.date.size() <= 50
+        && data.time is string && data.time.size() <= 50
+        && data.status is string && (data.status == 'pending' || data.status == 'approved' || data.status == 'completed' || data.status == 'cancelled')
+        && data.createdAt is int;
+    }
+
+    function isValidInquiry(data) {
+      return data.name is string && data.name.size() <= 100
+        && data.phone is string && data.phone.size() <= 100
+        && data.region is string && data.region.size() <= 100
+        && data.content is string && data.content.size() <= 2000
+        && data.status is string && (data.status == 'pending' || data.status == 'reviewed' || data.status == 'completed')
+        && data.createdAt is int;
+    }
+
+    function isValidRiderApplication(data) {
+      return data.name is string && data.name.size() <= 100
+        && data.phone is string && data.phone.size() <= 100
+        && data.age is int && data.age >= 18 && data.age <= 120
+        && data.region is string && data.region.size() <= 100
+        && data.experience is string && data.experience.size() <= 1000
+        && data.hasLicense is bool
+        && data.status is string && (data.status == 'pending' || data.status == 'reviewed' || data.status == 'completed')
+        && data.createdAt is int;
+    }
+
+    // --- COLLECTION RULES ---
+
+    // 1. Users Collection
+    match /users/{userId} {
+      allow get: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      allow create: if isSignedIn() && request.auth.uid == userId && isValidUser(incoming());
+      allow update: if isSignedIn() && (
+        (request.auth.uid == userId && isValidUser(incoming()) && incoming().role == existing().role) ||
+        isAdmin()
+      );
+      allow delete: if isAdmin();
+    }
+
+    // 2. Reservations Collection
+    match /reservations/{reservationId} {
+      // Seeding check allows public get of standard 'res-1' document. All other gets require ownership or admin.
+      allow get: if (reservationId == 'res-1') 
+        || (isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin()));
+      
+      // Admins can list all. Users can only list their own reservations.
+      allow list: if isAdmin() 
+        || (isSignedIn() && resource.data.userId == request.auth.uid);
+
+      // Create allows:
+      // - Unauthenticated creation for seeding (reservationId == 'res-1' etc.)
+      // - Authenticated creation of user's own reservation
+      allow create: if (
+        (!isSignedIn() && isValidId(reservationId) && (reservationId == 'res-1' || reservationId == 'res-2' || reservationId == 'res-3')) ||
+        (isSignedIn() && incoming().userId == request.auth.uid && isValidReservation(incoming()))
+      );
+
+      // Only admins or owners can update. Standard users can cancel their own, admins can update any fields.
+      allow update: if (
+        (isSignedIn() && resource.data.userId == request.auth.uid && incoming().userId == request.auth.uid && incoming().diff(existing()).affectedKeys().hasOnly(['status']) && incoming().status == 'cancelled') ||
+        isAdmin()
+      );
+
+      // Only admins can delete.
+      allow delete: if isAdmin();
+    }
+
+    // 3. Inquiries Collection (Franchise online inquiries)
+    match /inquiries/{inquiryId} {
+      allow get: if isAdmin();
+      allow list: if isAdmin();
+
+      // Anyone (even unauthenticated) can submit inquiries. Seeding also uses this.
+      allow create: if isValidInquiry(incoming());
+      
+      // Only admins can update or delete inquiries.
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // 4. Rider Applications Collection
+    match /rider_applications/{applicationId} {
+      allow get: if isAdmin() || (isSignedIn() && resource.data.userId == request.auth.uid);
+      allow list: if isAdmin() || (isSignedIn() && resource.data.userId == request.auth.uid);
+
+      // Create allows:
+      // - Unauthenticated creation for seeding
+      // - Authenticated creation of user's own rider application
+      allow create: if (
+        (!isSignedIn() && isValidId(applicationId) && (applicationId == 'app-1' || applicationId == 'app-2')) ||
+        (isSignedIn() && incoming().userId == request.auth.uid && isValidRiderApplication(incoming()))
+      );
+
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+  }
+}
