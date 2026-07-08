@@ -12,8 +12,10 @@ import { UserProfile } from './types';
 // Custom Section Components
 import Header from './components/Header';
 import Hero from './components/Hero';
+import AboutEnuriSection from './components/AboutEnuriSection';
 import FranchiseSection from './components/FranchiseSection';
 import BusinessSection from './components/BusinessSection';
+import PlusRecruitmentSection from './components/PlusRecruitmentSection';
 import MaintenanceSection from './components/MaintenanceSection';
 import EVRentalSection from './components/EVRentalSection';
 import RiderSection from './components/RiderSection';
@@ -86,7 +88,7 @@ export default function App() {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 500);
 
-      const sections = ['hero', 'franchise', 'maintenance', 'rental', 'recruitment', 'reservation'];
+      const sections = ['hero', 'about-enuri', 'plus-recruitment', 'franchise', 'maintenance', 'rental', 'recruitment', 'reservation'];
       const scrollPosition = window.scrollY + 300;
 
       for (const section of sections) {
@@ -133,7 +135,7 @@ export default function App() {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen text-slate-800 font-sans selection:bg-orange-600 selection:text-white">
+    <div className="bg-navy-950 min-h-screen text-slate-200 font-sans selection:bg-gold-500 selection:text-navy-950">
       {/* 1. Universal Top Header */}
       <Header
         user={user}
@@ -153,15 +155,15 @@ export default function App() {
         </div>
       )}
 
-      {/* 3. Floating Scroll To Top Button */}
+      {/* 3. Floating Scroll To Top Button (Shifted left to not overlap chatbot) */}
       {showScrollTop && (
         <button
           id="scroll-to-top-btn"
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-40 p-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white shadow-lg shadow-orange-600/20 transition-all transform hover:-translate-y-1 hover:scale-105 cursor-pointer"
+          className="fixed bottom-6 right-24 z-40 p-3 rounded-xl bg-gold-500 hover:bg-gold-600 text-navy-950 shadow-lg shadow-gold-500/20 transition-all transform hover:-translate-y-1 hover:scale-105 cursor-pointer"
           title="맨 위로"
         >
-          <ChevronUp className="w-5 h-5" />
+          <ChevronUp className="w-5 h-5 font-bold" />
         </button>
       )}
 
@@ -194,8 +196,20 @@ export default function App() {
             hasUser={!!user}
           />
 
+          {/* Section 1-2: About ENURI Card Showcase */}
+          <AboutEnuriSection
+            user={user}
+            onOpenAuth={(isSignUp) => setAuthModal({ isOpen: true, isSignUp })}
+          />
+
           {/* Business Core Pillars with Images */}
           <BusinessSection />
+
+          {/* Plus Partner Recruitment Section */}
+          <PlusRecruitmentSection
+            user={user}
+            onOpenAuth={(isSignUp) => setAuthModal({ isOpen: true, isSignUp })}
+          />
 
           {/* Section 2: Franchise & 대행상담 */}
           <FranchiseSection />
@@ -227,11 +241,11 @@ export default function App() {
       )}
 
       {/* 5. Cohesive Premium Footer */}
-      <footer className="bg-slate-900 border-t border-slate-850 text-slate-400 py-16 text-xs sm:text-sm">
+      <footer className="bg-navy-900 border-t border-navy-800 text-slate-400 py-16 text-xs sm:text-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           {/* Left Column Brand */}
           <div className="md:col-span-4 space-y-4">
-            <span className="text-lg font-black tracking-wider text-slate-200 font-sans block">
+            <span className="text-lg font-black tracking-wider text-gold-500 font-sans block">
               LAVACORE MOBILITY
             </span>
             <p className="text-slate-400 leading-relaxed max-w-sm">
@@ -242,24 +256,24 @@ export default function App() {
 
           {/* Middle Column Contacts */}
           <div className="md:col-span-5 space-y-3">
-            <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block mb-2">
+            <span className="text-[10px] uppercase font-bold tracking-wider text-slate-500 block mb-2">
               Corporate & Support Information
             </span>
-            <div className="space-y-1.5 text-slate-400">
-              <p className="flex items-center gap-2"><MapPin className="w-3.5 h-3.5 shrink-0" /> 회사 주소: 대전광역시 서구 괴정로 88</p>
-              <p className="flex items-center gap-2"><Phone className="w-3.5 h-3.5 shrink-0" /> 대표 번호: 010-3934-4022 (연중무휴)</p>
-              <p className="flex items-center gap-2"><Mail className="w-3.5 h-3.5 shrink-0" /> 이메일: hairart04@gmail.com</p>
-              <p className="flex items-center gap-2"><FileText className="w-3.5 h-3.5 shrink-0" /> 대표이사: 방효석</p>
-              <p className="flex items-center gap-2"><FileText className="w-3.5 h-3.5 shrink-0" /> 사업자등록번호: 806-25-01282</p>
+            <div className="space-y-1.5 text-slate-450">
+              <p className="flex items-center gap-2"><MapPin className="w-3.5 h-3.5 shrink-0 text-gold-500/80" /> 회사 주소: 대전광역시 서구 괴정로 88</p>
+              <p className="flex items-center gap-2"><Phone className="w-3.5 h-3.5 shrink-0 text-gold-500/80" /> 대표 번호: 010-3934-4022 (연중무휴)</p>
+              <p className="flex items-center gap-2"><Mail className="w-3.5 h-3.5 shrink-0 text-gold-500/80" /> 이메일: hairart04@gmail.com</p>
+              <p className="flex items-center gap-2"><FileText className="w-3.5 h-3.5 shrink-0 text-gold-500/80" /> 대표이사: 방효석</p>
+              <p className="flex items-center gap-2"><FileText className="w-3.5 h-3.5 shrink-0 text-gold-500/80" /> 사업자등록번호: 806-25-01282</p>
             </div>
           </div>
 
           {/* Right Column Services overview */}
           <div className="md:col-span-3 space-y-2">
-            <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block mb-2">
+            <span className="text-[10px] uppercase font-bold tracking-wider text-slate-500 block mb-2">
               Core Businesses
             </span>
-            <div className="space-y-1 text-slate-400">
+            <div className="space-y-1 text-slate-450">
               <p>배달대행 API 플랫폼 연동 제휴</p>
               <p>이누리(Enuri) 전기 오토바이 판매/렌탈</p>
               <p>마이크로 딜리버리 이륜차 현장 케어</p>
@@ -269,12 +283,12 @@ export default function App() {
         </div>
 
         {/* Footer bottom */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-navy-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-4">
           <p>© 2026 LAVACORE MOBILITY. All rights reserved.</p>
           <div className="flex gap-4">
-            <a href="#privacy" className="hover:text-slate-300">개인정보처리방침</a>
-            <a href="#terms" className="hover:text-slate-300">이용약관</a>
-            <a href="#location" className="hover:text-slate-300">위치기반서비스이용약관</a>
+            <a href="#privacy" className="hover:text-gold-400 transition-colors">개인정보처리방침</a>
+            <a href="#terms" className="hover:text-gold-400 transition-colors">利用약관</a>
+            <a href="#location" className="hover:text-gold-400 transition-colors">위치기반서비스이용약관</a>
           </div>
         </div>
       </footer>

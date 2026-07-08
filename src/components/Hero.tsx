@@ -15,64 +15,64 @@ export default function Hero({ onNavigate, onOpenAuth, hasUser }: HeroProps) {
   ];
 
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col justify-center bg-slate-50 text-slate-800 pt-24 overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex flex-col justify-center bg-navy-950 text-slate-200 pt-24 overflow-hidden">
       {/* Background visual accents */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(249,115,22,0.06),transparent_50%)]"></div>
-      <div className="absolute top-[30%] left-[-10%] w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[120px]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(193,150,42,0.08),transparent_50%)]"></div>
+      <div className="absolute top-[30%] left-[-10%] w-[500px] h-[500px] bg-gold-500/5 rounded-full blur-[120px]"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         {/* Visual Call To Action & Text */}
         <div className="lg:col-span-7 space-y-8 text-left">
-          <div className="inline-flex items-center space-x-2 bg-orange-100 border border-orange-200 px-3 py-1.5 rounded-full">
-            <Zap className="w-4 h-4 text-orange-600 animate-pulse" />
-            <span className="text-xs font-bold text-orange-700 tracking-wider font-mono">
+          <div className="inline-flex items-center space-x-2 bg-gold-500/10 border border-gold-500/20 px-3 py-1.5 rounded-full">
+            <Zap className="w-4 h-4 text-gold-500 animate-pulse" />
+            <span className="text-xs font-bold text-gold-400 tracking-wider font-mono">
               PREMIUM MOBILITY SOLUTION
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight font-sans text-slate-900">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight font-sans text-white">
             모빌리티의 기준을 세우다
-            <span className="block mt-2 text-orange-600">
+            <span className="block mt-2 text-gold-500">
               LAVACORE MOBILITY
             </span>
           </h1>
 
-          <p className="text-lg text-slate-600 leading-relaxed max-w-2xl font-medium">
+          <p className="text-lg text-slate-300 leading-relaxed max-w-2xl font-medium">
             배달대행 플랫폼과의 매끄러운 연동, 최고 수준의 자체 정비 인프라, 
-            친환경 <strong>이누리(Enuri)</strong> 전기 이륜차 렌탈까지. 
-            상생과 상생을 이어주는 최첨단 모빌리티 생태계, 지금 LAVACORE MOBILITY와 함께 만들어가세요.
+            친환경 <strong className="text-gold-400">이누리(Enuri)</strong> 전기 이륜차 렌탈까지. 
+            상생과 혁신을 이어주는 최첨단 모빌리티 생태계, 지금 LAVACORE MOBILITY와 함께 만들어가세요.
           </p>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
             <button
               id="hero-franchise-btn"
               onClick={() => onNavigate('franchise')}
-              className="flex items-center justify-center space-x-2 px-8 py-4 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold transition-all transform hover:-translate-y-0.5 shadow-lg shadow-orange-600/15 cursor-pointer"
+              className="flex items-center justify-center space-x-2 px-8 py-4 rounded-xl bg-gold-500 hover:bg-gold-600 text-navy-950 font-bold transition-all transform hover:-translate-y-0.5 shadow-lg shadow-gold-500/15 cursor-pointer"
             >
               <span>가맹 및 상담 문의</span>
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-5 h-5 font-bold" />
             </button>
             <button
               id="hero-recruitment-btn"
               onClick={() => onNavigate('recruitment')}
-              className="flex items-center justify-center space-x-2 px-8 py-4 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-sm font-semibold transition-all cursor-pointer"
+              className="flex items-center justify-center space-x-2 px-8 py-4 rounded-xl bg-navy-900 hover:bg-navy-800 text-slate-200 border border-navy-800 shadow-sm font-semibold transition-all cursor-pointer"
             >
               <span>라이더 지원하기</span>
             </button>
           </div>
 
           {/* Key Trust Badges */}
-          <div className="pt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-500 font-semibold">
+          <div className="pt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-400 font-semibold">
             <div className="flex items-center space-x-2">
-              <ShieldCheck className="w-5 h-5 text-orange-600" />
+              <ShieldCheck className="w-5 h-5 text-gold-500" />
               <span>종합 책임 보험 지원</span>
             </div>
             <div className="flex items-center space-x-2">
-              <Shield className="w-5 h-5 text-orange-600" />
+              <Shield className="w-5 h-5 text-gold-500" />
               <span>실시간 플랫폼 API 연계</span>
             </div>
             <div className="flex items-center space-x-2">
-              <Award className="w-5 h-5 text-orange-600" />
+              <Award className="w-5 h-5 text-gold-500" />
               <span>공식 브랜드 이누리 취급</span>
             </div>
           </div>
@@ -80,52 +80,52 @@ export default function Hero({ onNavigate, onOpenAuth, hasUser }: HeroProps) {
 
         {/* Dynamic Mockup Card visual of LAVACORE platform */}
         <div className="lg:col-span-5 relative">
-          <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/5 to-yellow-500/5 rounded-3xl blur-2xl"></div>
-          <div className="relative bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-6">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+          <div className="absolute inset-0 bg-gradient-to-tr from-gold-500/5 to-navy-500/5 rounded-3xl blur-2xl"></div>
+          <div className="relative bg-navy-900 border border-navy-800 rounded-3xl p-6 shadow-xl space-y-6">
+            <div className="flex items-center justify-between border-b border-navy-850 pb-4">
               <div className="flex items-center space-x-2">
                 <div className="w-3 h-3 rounded-full bg-red-400"></div>
                 <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
                 <div className="w-3 h-3 rounded-full bg-green-400"></div>
               </div>
-              <span className="text-xs font-bold font-mono text-slate-400">LAVACORE MOBILITY DASHBOARD</span>
+              <span className="text-xs font-bold font-mono text-slate-500">LAVACORE MOBILITY DASHBOARD</span>
             </div>
 
             {/* Quick Interactive Promo inside card */}
             <div className="space-y-4">
-              <div className="p-4 bg-slate-50 rounded-xl border border-slate-100 flex items-center justify-between">
+              <div className="p-4 bg-navy-950/80 rounded-xl border border-navy-850 flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-slate-400 font-semibold">ACTIVE PLATFORMS</p>
-                  <p className="text-sm font-bold text-slate-800 mt-1">배민커넥트 & 쿠팡이츠</p>
+                  <p className="text-xs text-slate-500 font-semibold">ACTIVE PLATFORMS</p>
+                  <p className="text-sm font-bold text-slate-200 mt-1">배민커넥트 & 쿠팡이츠</p>
                 </div>
-                <span className="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-bold rounded">CONNECTED</span>
+                <span className="px-2.5 py-1 bg-green-950/40 text-green-400 border border-green-900/30 text-[10px] font-bold rounded">CONNECTED</span>
               </div>
 
-              <div className="p-4 bg-slate-50 rounded-xl border border-slate-100 flex items-center justify-between">
+              <div className="p-4 bg-navy-950/80 rounded-xl border border-navy-850 flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-slate-400 font-semibold">ENURI EV BIKE RENTAL</p>
-                  <p className="text-sm font-bold text-slate-800 mt-1">이누리 V1 스페셜 모델</p>
+                  <p className="text-xs text-slate-500 font-semibold">ENURI EV BIKE RENTAL</p>
+                  <p className="text-sm font-bold text-slate-200 mt-1">이누리 V1 스페셜 모델</p>
                 </div>
-                <span className="px-2.5 py-1 bg-orange-100 text-orange-700 text-[10px] font-bold rounded">AVAILABLE</span>
+                <span className="px-2.5 py-1 bg-gold-500/10 text-gold-400 border border-gold-500/20 text-[10px] font-bold rounded">AVAILABLE</span>
               </div>
 
-              <div className="p-4 bg-slate-50 rounded-xl border border-slate-100 flex items-center justify-between">
+              <div className="p-4 bg-navy-950/80 rounded-xl border border-navy-850 flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-slate-400 font-semibold">MAINTENANCE SYSTEM</p>
-                  <p className="text-sm font-bold text-slate-800 mt-1">실시간 정비 접수 현황</p>
+                  <p className="text-xs text-slate-500 font-semibold">MAINTENANCE SYSTEM</p>
+                  <p className="text-sm font-bold text-slate-200 mt-1">실시간 정비 접수 현황</p>
                 </div>
-                <span className="px-2.5 py-1 bg-blue-100 text-blue-700 text-[10px] font-bold rounded">LIVE SUPPORT</span>
+                <span className="px-2.5 py-1 bg-blue-950/40 text-blue-400 border border-blue-900/30 text-[10px] font-bold rounded">LIVE SUPPORT</span>
               </div>
             </div>
 
             {/* Micro-login reminder inside Hero card if user is anonymous */}
             {!hasUser && (
-              <div className="p-4 bg-orange-50 border border-orange-100 rounded-xl text-center">
-                <p className="text-xs text-slate-600 font-semibold mb-2">간편하게 회원가입 후 예약/접수를 진행하세요.</p>
+              <div className="p-4 bg-gold-500/5 border border-gold-500/10 rounded-xl text-center">
+                <p className="text-xs text-slate-450 font-semibold mb-2">간편하게 회원가입 후 예약/접수를 진행하세요.</p>
                 <button
                   id="hero-card-signup-btn"
                   onClick={() => onOpenAuth(true)}
-                  className="text-xs text-orange-600 font-extrabold hover:underline cursor-pointer"
+                  className="text-xs text-gold-500 font-extrabold hover:underline cursor-pointer"
                 >
                   3초 회원가입 바로가기 &rarr;
                 </button>
@@ -136,16 +136,16 @@ export default function Hero({ onNavigate, onOpenAuth, hasUser }: HeroProps) {
       </div>
 
       {/* Numerical Stats Bar */}
-      <div className="border-t border-slate-200 bg-white py-12">
+      <div className="border-t border-navy-800 bg-navy-900 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {stats.map((stat, i) => (
               <div key={i} className="text-center space-y-2">
-                <p className="text-4xl font-black text-orange-600 font-mono">
+                <p className="text-4xl font-black text-gold-500 font-mono">
                   {stat.value}
                 </p>
-                <p className="text-sm font-bold text-slate-800">{stat.label}</p>
-                <p className="text-xs text-slate-500">{stat.desc}</p>
+                <p className="text-sm font-bold text-slate-200">{stat.label}</p>
+                <p className="text-xs text-slate-450">{stat.desc}</p>
               </div>
             ))}
           </div>

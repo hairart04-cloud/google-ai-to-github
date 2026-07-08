@@ -70,19 +70,19 @@ export default function EVRentalSection({ user, onOpenAuth }: EVRentalSectionPro
   };
 
   return (
-    <section id="rental" className="py-24 bg-white text-slate-800 relative border-b border-slate-200">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(249,115,22,0.02),transparent_40%)]"></div>
+    <section id="rental" className="py-24 bg-navy-950 text-slate-200 relative border-b border-navy-800">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(193,150,42,0.04),transparent_40%)]"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
-          <span className="text-xs font-bold text-orange-600 tracking-widest uppercase">
+          <span className="text-xs font-bold text-gold-500 tracking-widest uppercase">
             SIGNATURE EV BIKE SHOWCASE
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold font-sans text-slate-900">
+          <h2 className="text-3xl sm:text-4xl font-extrabold font-sans text-white">
             친환경 이누리(Enuri) V1 전기 바이크
           </h2>
-          <p className="text-slate-500 text-base">
-            유류비 걱정 끝! 일상 주행부터 배달대행까지 완벽히 소화하는 대표 베스트셀러 모델 <strong>이누리 V1</strong>을 만나보세요. 
+          <p className="text-slate-400 text-base">
+            유류비 걱정 끝! 일상 주행부터 배달대행까지 완벽히 소화하는 대표 베스트셀러 모델 <strong className="text-gold-400">이누리 V1</strong>을 만나보세요. 
             탈착식 배터리팩 탑재로 언제 어디서나 콘센트 충전이 가능하며 뛰어난 내구성을 자랑합니다.
           </p>
         </div>
@@ -92,19 +92,19 @@ export default function EVRentalSection({ user, onOpenAuth }: EVRentalSectionPro
           {evBikes.map((bike) => (
             <div
               key={bike.id}
-              className={`flex flex-col md:flex-row justify-between rounded-3xl bg-white border transition-all overflow-hidden shadow-lg max-w-3xl w-full ${
-                selectedBike?.id === bike.id ? 'border-orange-500 ring-4 ring-orange-500/10' : 'border-slate-200 hover:border-orange-500/30'
+              className={`flex flex-col md:flex-row justify-between rounded-3xl bg-navy-900 border transition-all overflow-hidden shadow-xl max-w-3xl w-full ${
+                selectedBike?.id === bike.id ? 'border-gold-500 ring-4 ring-gold-500/10' : 'border-navy-800 hover:border-gold-500/30'
               }`}
             >
               {/* Image Column */}
-              <div className="h-64 md:h-auto md:w-1/2 relative overflow-hidden bg-slate-100 shrink-0">
+              <div className="h-64 md:h-auto md:w-1/2 relative overflow-hidden bg-navy-950 shrink-0">
                 <img
                   src={bike.imageUrl}
                   alt={bike.name}
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover opacity-95 hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover opacity-80 hover:opacity-100 hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute top-4 left-4 bg-slate-900/95 text-orange-400 text-xs font-bold px-3 py-1.5 rounded-full border border-orange-500/20">
+                <div className="absolute top-4 left-4 bg-navy-900/95 text-gold-400 text-xs font-bold px-3 py-1.5 rounded-full border border-gold-500/20">
                   {bike.type}
                 </div>
               </div>
@@ -112,33 +112,33 @@ export default function EVRentalSection({ user, onOpenAuth }: EVRentalSectionPro
               {/* Content Column */}
               <div className="p-6 sm:p-8 md:w-1/2 flex-1 flex flex-col justify-between space-y-6">
                 <div>
-                  <h3 className="text-xl font-bold text-slate-900">{bike.name}</h3>
-                  <p className="text-sm text-slate-500 mt-2.5 leading-relaxed">
+                  <h3 className="text-xl font-bold text-white">{bike.name}</h3>
+                  <p className="text-sm text-slate-400 mt-2.5 leading-relaxed">
                     {bike.description}
                   </p>
                 </div>
 
                 {/* Specs */}
-                <div className="grid grid-cols-2 gap-3 text-xs text-slate-600 py-4 border-t border-b border-slate-100 font-mono">
+                <div className="grid grid-cols-2 gap-3 text-xs text-slate-300 py-4 border-t border-b border-navy-850 font-mono">
                   <div className="flex items-center space-x-2">
-                    <Battery className="w-4 h-4 text-orange-600 shrink-0" />
+                    <Battery className="w-4 h-4 text-gold-500 shrink-0" />
                     <span className="truncate">{bike.batteryCapacity}</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Fuel className="w-4 h-4 text-orange-600 shrink-0" />
+                    <Fuel className="w-4 h-4 text-gold-500 shrink-0" />
                     <span className="truncate">{bike.range}</span>
                   </div>
                   <div className="flex items-center space-x-2 col-span-2">
-                    <Flame className="w-4 h-4 text-orange-600 shrink-0" />
+                    <Flame className="w-4 h-4 text-gold-500 shrink-0" />
                     <span>최고 속도: {bike.maxSpeed}</span>
                   </div>
                 </div>
 
                 <div className="flex items-center justify-between pt-2">
                   <div>
-                    <span className="text-xs text-slate-400 block">월 렌탈료</span>
-                    <span className="text-xl font-black text-orange-600 font-mono">
-                      ₩{(bike.monthlyFee).toLocaleString()} <span className="text-xs text-slate-500 font-normal">/월</span>
+                    <span className="text-xs text-slate-500 block">월 렌탈료</span>
+                    <span className="text-xl font-black text-gold-500 font-mono">
+                      ₩{(bike.monthlyFee).toLocaleString()} <span className="text-xs text-slate-450 font-normal">/월</span>
                     </span>
                   </div>
                   <button
@@ -149,7 +149,7 @@ export default function EVRentalSection({ user, onOpenAuth }: EVRentalSectionPro
                       // Scroll slightly to detail form
                       document.getElementById('ev-booking-anchor')?.scrollIntoView({ behavior: 'smooth' });
                     }}
-                    className="px-6 py-2.5 bg-orange-600 hover:bg-orange-700 text-white rounded-xl text-sm font-bold transition-all shadow-md hover:shadow-lg cursor-pointer"
+                    className="px-6 py-2.5 bg-gold-500 hover:bg-gold-600 text-navy-950 rounded-xl text-sm font-bold transition-all shadow-md hover:shadow-lg cursor-pointer"
                   >
                     렌탈 및 구매 신청
                   </button>
@@ -164,11 +164,11 @@ export default function EVRentalSection({ user, onOpenAuth }: EVRentalSectionPro
 
         {/* Selected Bike Application Form */}
         {selectedBike && (
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl max-w-2xl mx-auto animate-fade-in text-white">
+          <div className="bg-navy-900 border border-navy-800 rounded-3xl p-6 sm:p-10 shadow-2xl max-w-2xl mx-auto animate-fade-in text-white">
             {submitted ? (
               <div className="text-center py-12 space-y-6">
                 <div className="inline-flex p-4 bg-green-500/10 border border-green-500/20 rounded-full">
-                  <CheckCircle className="w-12 h-12 text-green-500" />
+                  <CheckCircle className="w-12 h-12 text-green-400" />
                 </div>
                 <h3 className="text-2xl font-bold">전기 이륜차 렌탈 접수 완료!</h3>
                 <p className="text-slate-400 text-sm max-w-md mx-auto leading-relaxed">
@@ -181,19 +181,19 @@ export default function EVRentalSection({ user, onOpenAuth }: EVRentalSectionPro
                     setSubmitted(false);
                     setSelectedBike(null);
                   }}
-                  className="px-6 py-2.5 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-xl transition-colors cursor-pointer text-sm"
+                  className="px-6 py-2.5 bg-gold-500 hover:bg-gold-600 text-navy-950 font-bold transition-all cursor-pointer text-sm"
                 >
                   목록으로 돌아가기
                 </button>
               </div>
             ) : (
               <form onSubmit={handleBooking} className="space-y-6">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+                <div className="flex items-center justify-between border-b border-navy-800 pb-4 mb-4">
                   <div className="flex items-center space-x-2">
-                    <Info className="w-5.5 h-5.5 text-orange-500" />
+                    <Info className="w-5.5 h-5.5 text-gold-500" />
                     <h3 className="text-lg font-bold">이누리 바이크 렌탈 온라인 신청서</h3>
                   </div>
-                  <span className="text-xs bg-orange-500/10 text-orange-400 border border-orange-500/20 px-3 py-1 rounded-full font-bold">
+                  <span className="text-xs bg-gold-500/10 text-gold-400 border border-gold-500/20 px-3 py-1 rounded-full font-bold">
                     선택 모델: {selectedBike.name}
                   </span>
                 </div>
@@ -204,14 +204,14 @@ export default function EVRentalSection({ user, onOpenAuth }: EVRentalSectionPro
                       희망 출고 개시일
                     </label>
                     <div className="relative">
-                      <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-550" />
+                      <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-500" />
                       <input
                         id="ev-start-date"
                         type="date"
                         required
                         value={startDate}
                         onChange={(e) => setStartDate(e.target.value)}
-                        className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2.5 pl-10 pr-4 text-sm text-white focus:outline-none focus:border-orange-500 transition-colors"
+                        className="w-full bg-navy-950 border border-navy-850 rounded-xl py-2.5 pl-10 pr-4 text-sm text-white focus:outline-none focus:border-gold-500 transition-colors"
                       />
                     </div>
                   </div>
@@ -221,13 +221,13 @@ export default function EVRentalSection({ user, onOpenAuth }: EVRentalSectionPro
                       의무 사용 약정 기간
                     </label>
                     <div className="relative">
-                      <CreditCard className="absolute left-3 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-555" />
+                      <CreditCard className="absolute left-3 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-500" />
                       <select
                         id="ev-duration-select"
                         required
                         value={duration}
                         onChange={(e) => setDuration(e.target.value)}
-                        className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2.5 pl-10 pr-4 text-sm text-white focus:outline-none focus:border-orange-500 transition-colors appearance-none cursor-pointer"
+                        className="w-full bg-navy-950 border border-navy-850 rounded-xl py-2.5 pl-10 pr-4 text-sm text-white focus:outline-none focus:border-gold-500 transition-colors appearance-none cursor-pointer"
                       >
                         <option value="1">1개월 (단기 렌트)</option>
                         <option value="3">3개월 (정기 라이딩)</option>
@@ -250,14 +250,14 @@ export default function EVRentalSection({ user, onOpenAuth }: EVRentalSectionPro
                       placeholder="010-XXXX-XXXX"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2.5 px-4 text-sm text-white focus:outline-none focus:border-orange-500 transition-colors"
+                      className="w-full bg-navy-950 border border-navy-850 rounded-xl py-2.5 px-4 text-sm text-white focus:outline-none focus:border-gold-500 transition-colors"
                     />
                   </div>
                   <div>
                     <label className="block text-xs font-semibold uppercase text-slate-400 mb-1.5">
                       월 사용료 (추정액)
                     </label>
-                    <div className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2.5 px-4 text-sm text-orange-400 font-extrabold font-mono">
+                    <div className="w-full bg-navy-950 border border-navy-850 rounded-xl py-2.5 px-4 text-sm text-gold-400 font-extrabold font-mono">
                       ₩{(selectedBike.monthlyFee).toLocaleString()} / 월
                     </div>
                   </div>
@@ -273,12 +273,12 @@ export default function EVRentalSection({ user, onOpenAuth }: EVRentalSectionPro
                     placeholder="예: 종합 책임보험 패키지 결합 희망, 배달용 스마트폰 충전 거치대 무상 증정 혜택 포함 여부 등"
                     value={details}
                     onChange={(e) => setDetails(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2.5 px-4 text-sm text-white focus:outline-none focus:border-orange-500 transition-colors resize-none"
+                    className="w-full bg-navy-950 border border-navy-850 rounded-xl py-2.5 px-4 text-sm text-white focus:outline-none focus:border-gold-500 transition-colors resize-none"
                   />
                 </div>
 
-                <div className="flex gap-3 bg-orange-500/5 p-4 border border-orange-500/20 rounded-xl text-xs text-slate-300">
-                  <input id="ev-license-checkbox" type="checkbox" required className="accent-orange-500 w-4 h-4 shrink-0 rounded" />
+                <div className="flex gap-3 bg-gold-500/5 p-4 border border-gold-500/20 rounded-xl text-xs text-slate-350">
+                  <input id="ev-license-checkbox" type="checkbox" required className="accent-gold-500 w-4 h-4 shrink-0 rounded" />
                   <span>
                     <strong>[필수] 만 21세 이상 및 오토바이/이륜차 운전 면허증 보유 동의</strong><br/>
                     차량 인도 시 면허 소지 여부가 재확인되며 무면허 시 인도가 불가합니다.
@@ -286,7 +286,7 @@ export default function EVRentalSection({ user, onOpenAuth }: EVRentalSectionPro
                 </div>
 
                 {!user && (
-                  <div className="bg-orange-500/10 border border-orange-500/20 rounded-xl p-3 text-center text-xs text-orange-400">
+                  <div className="bg-gold-500/10 border border-gold-500/20 rounded-xl p-3 text-center text-xs text-gold-400">
                     렌탈 신청을 등록하려면 로그인이 필요합니다.
                   </div>
                 )}
@@ -296,7 +296,7 @@ export default function EVRentalSection({ user, onOpenAuth }: EVRentalSectionPro
                     id="ev-cancel-btn"
                     type="button"
                     onClick={() => setSelectedBike(null)}
-                    className="flex-1 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-xl transition-colors cursor-pointer text-sm"
+                    className="flex-1 py-3.5 bg-navy-950 hover:bg-navy-850 text-slate-300 font-bold border border-navy-850 rounded-xl transition-colors cursor-pointer text-sm"
                   >
                     취소하기
                   </button>
@@ -304,7 +304,7 @@ export default function EVRentalSection({ user, onOpenAuth }: EVRentalSectionPro
                     id="ev-submit-btn"
                     type="submit"
                     disabled={loading}
-                    className="flex-1 py-3.5 bg-orange-600 hover:bg-orange-700 disabled:bg-orange-850 text-white font-bold rounded-xl transition-colors cursor-pointer text-sm"
+                    className="flex-1 py-3.5 bg-gold-500 hover:bg-gold-600 disabled:bg-gold-800 text-navy-950 font-black rounded-xl transition-colors cursor-pointer text-sm"
                   >
                     {loading ? '제출 중...' : user ? '렌탈 예약 신청하기' : '로그인 후 신청'}
                   </button>

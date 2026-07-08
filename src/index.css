@@ -4,6 +4,25 @@
 @theme {
   --font-sans: "Inter", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Custom Premium Navy & Gold Color System */
+  --color-navy-950: #050811;
+  --color-navy-900: #0b1120;
+  --color-navy-800: #151f32;
+  --color-navy-700: #22314a;
+  --color-navy-600: #2e4364;
+  --color-navy-500: #3b567f;
+
+  --color-gold-50: #faf6e8;
+  --color-gold-100: #f3ebc6;
+  --color-gold-200: #e6d48c;
+  --color-gold-300: #d7ba53;
+  --color-gold-400: #cca735;
+  --color-gold-500: #c1962a; /* Primary Gold Accent */
+  --color-gold-600: #a57c21;
+  --color-gold-700: #855f1c;
+  --color-gold-800: #6a4b1b;
+  --color-gold-900: #583d1b;
 }
 
 @keyframes fadeIn {
@@ -27,14 +46,14 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(5, 8, 17, 0.6);
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(249, 115, 22, 0.25);
+  background: rgba(193, 150, 42, 0.25);
   border-radius: 9999px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(249, 115, 22, 0.45);
+  background: rgba(193, 150, 42, 0.45);
 }

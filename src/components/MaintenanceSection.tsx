@@ -133,18 +133,18 @@ export default function MaintenanceSection({ user, onOpenAuth }: MaintenanceSect
   };
 
   return (
-    <section id="maintenance" className="py-24 bg-slate-50 text-slate-800 relative border-b border-slate-200">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(249,115,22,0.03),transparent_35%)]"></div>
+    <section id="maintenance" className="py-24 bg-navy-900 text-slate-200 relative border-b border-navy-800">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(193,150,42,0.04),transparent_35%)]"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <span className="text-xs font-bold text-orange-600 tracking-widest uppercase">
+          <span className="text-xs font-bold text-gold-500 tracking-widest uppercase">
             MAINTENANCE & LIVE CHAT
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold font-sans text-slate-900">
+          <h2 className="text-3xl sm:text-4xl font-extrabold font-sans text-white">
             오토바이 정비 예약 및 실시간 상담
           </h2>
-          <p className="text-slate-500 text-base">
+          <p className="text-slate-400 text-base">
             최상의 컨디션으로 정교하고 안전한 운행을 돕습니다. LAVACORE 정비 센터의 예약과 
             실시간 전문 챗봇 상담을 원스톱으로 누려 보세요.
           </p>
@@ -152,20 +152,20 @@ export default function MaintenanceSection({ user, onOpenAuth }: MaintenanceSect
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
           {/* Reservation Form */}
-          <div className="lg:col-span-6 bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm">
+          <div className="lg:col-span-6 bg-navy-950 border border-navy-800 rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-xl">
             {formSubmitted ? (
               <div className="text-center py-20 space-y-6 flex-1 flex flex-col justify-center items-center">
                 <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-full">
-                  <CheckCircle className="w-12 h-12 text-green-500" />
+                  <CheckCircle className="w-12 h-12 text-green-400" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900">정비 예약 접수 완료!</h3>
-                <p className="text-slate-500 text-sm max-w-sm mx-auto leading-relaxed">
+                <h3 className="text-xl font-bold text-white">정비 예약 접수 완료!</h3>
+                <p className="text-slate-400 text-sm max-w-sm mx-auto leading-relaxed">
                   정비 전문가가 내용을 검토한 후, 승인 여부와 세부 예상 정비 비용을 안내하기 위해 연락드리겠습니다.
                 </p>
                 <button
                   id="maint-reset-btn"
                   onClick={() => setFormSubmitted(false)}
-                  className="px-6 py-2.5 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-xl transition-colors cursor-pointer text-sm"
+                  className="px-6 py-2.5 bg-gold-500 hover:bg-gold-600 text-navy-950 font-bold rounded-xl transition-colors cursor-pointer text-sm"
                 >
                   새 정비 예약 추가하기
                 </button>
@@ -173,15 +173,15 @@ export default function MaintenanceSection({ user, onOpenAuth }: MaintenanceSect
             ) : (
               <form onSubmit={handleFormSubmit} className="space-y-5 flex-1 flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center space-x-2.5 border-b border-slate-100 pb-4 mb-5">
-                    <Wrench className="w-5.5 h-5.5 text-orange-600" />
-                    <h3 className="text-lg font-bold text-slate-900">신속 정비 예약 신청</h3>
+                  <div className="flex items-center space-x-2.5 border-b border-navy-850 pb-4 mb-5">
+                    <Wrench className="w-5.5 h-5.5 text-gold-500" />
+                    <h3 className="text-lg font-bold text-white">신속 정비 예약 신청</h3>
                   </div>
 
                   <div className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-semibold uppercase text-slate-500 mb-1">예약자 성함</label>
+                        <label className="block text-xs font-semibold uppercase text-slate-400 mb-1">예약자 성함</label>
                         <input
                           id="maint-name-input"
                           type="text"
@@ -189,11 +189,11 @@ export default function MaintenanceSection({ user, onOpenAuth }: MaintenanceSect
                           placeholder="홍길동"
                           value={userName}
                           onChange={(e) => setUserName(e.target.value)}
-                          className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3.5 text-sm text-slate-800 focus:outline-none focus:border-orange-500 transition-colors"
+                          className="w-full bg-navy-900 border border-navy-850 rounded-xl py-2.5 px-3.5 text-sm text-white focus:outline-none focus:border-gold-500 transition-colors"
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-semibold uppercase text-slate-500 mb-1">연락처</label>
+                        <label className="block text-xs font-semibold uppercase text-slate-400 mb-1">연락처</label>
                         <input
                           id="maint-phone-input"
                           type="tel"
@@ -201,38 +201,38 @@ export default function MaintenanceSection({ user, onOpenAuth }: MaintenanceSect
                           placeholder="010-XXXX-XXXX"
                           value={userPhone}
                           onChange={(e) => setUserPhone(e.target.value)}
-                          className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3.5 text-sm text-slate-800 focus:outline-none focus:border-orange-500 transition-colors"
+                          className="w-full bg-navy-900 border border-navy-850 rounded-xl py-2.5 px-3.5 text-sm text-white focus:outline-none focus:border-gold-500 transition-colors"
                         />
                       </div>
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-semibold uppercase text-slate-500 mb-1">희망 날짜</label>
+                        <label className="block text-xs font-semibold uppercase text-slate-400 mb-1">희망 날짜</label>
                         <input
                           id="maint-date-input"
                           type="date"
                           required
                           value={date}
                           onChange={(e) => setDate(e.target.value)}
-                          className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3.5 text-sm text-slate-800 focus:outline-none focus:border-orange-500 transition-colors"
+                          className="w-full bg-navy-900 border border-navy-850 rounded-xl py-2.5 px-3.5 text-sm text-white focus:outline-none focus:border-gold-500 transition-colors"
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-semibold uppercase text-slate-500 mb-1">희망 시간</label>
+                        <label className="block text-xs font-semibold uppercase text-slate-400 mb-1">희망 시간</label>
                         <input
                           id="maint-time-input"
                           type="time"
                           required
                           value={time}
                           onChange={(e) => setTime(e.target.value)}
-                          className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3.5 text-sm text-slate-800 focus:outline-none focus:border-orange-500 transition-colors"
+                          className="w-full bg-navy-900 border border-navy-850 rounded-xl py-2.5 px-3.5 text-sm text-white focus:outline-none focus:border-gold-500 transition-colors"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold uppercase text-slate-500 mb-1">기종 및 차종</label>
+                      <label className="block text-xs font-semibold uppercase text-slate-400 mb-1">기종 및 차종</label>
                       <input
                         id="maint-model-input"
                         type="text"
@@ -240,12 +240,12 @@ export default function MaintenanceSection({ user, onOpenAuth }: MaintenanceSect
                         placeholder="예: 이누리 Enuri V1, 혼다 PCX 125, 야마하 NMAX"
                         value={bikeModel}
                         onChange={(e) => setBikeModel(e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3.5 text-sm text-slate-800 focus:outline-none focus:border-orange-500 transition-colors"
+                        className="w-full bg-navy-900 border border-navy-850 rounded-xl py-2.5 px-3.5 text-sm text-white focus:outline-none focus:border-gold-500 transition-colors"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold uppercase text-slate-500 mb-1">정비 요청 내용</label>
+                      <label className="block text-xs font-semibold uppercase text-slate-400 mb-1">정비 요청 내용</label>
                       <textarea
                         id="maint-details-input"
                         required
@@ -253,14 +253,14 @@ export default function MaintenanceSection({ user, onOpenAuth }: MaintenanceSect
                         placeholder="예: 엔진 오일 교체 및 소음 점검, 브레이크 밀림 증상 점검 등 상세히 적어주세요."
                         value={details}
                         onChange={(e) => setDetails(e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3.5 text-sm text-slate-800 focus:outline-none focus:border-orange-500 transition-colors resize-none"
+                        className="w-full bg-navy-900 border border-navy-850 rounded-xl py-2.5 px-3.5 text-sm text-white focus:outline-none focus:border-gold-500 transition-colors resize-none"
                       />
                     </div>
                   </div>
                 </div>
 
                 {!user && (
-                  <div className="bg-orange-100 border border-orange-200 rounded-xl p-3 mt-4 text-center text-xs text-orange-800">
+                  <div className="bg-gold-500/10 border border-gold-500/20 rounded-xl p-3 mt-4 text-center text-xs text-gold-400">
                     예약을 접수하려면 먼저 로그인이 필요합니다.
                   </div>
                 )}
@@ -269,7 +269,7 @@ export default function MaintenanceSection({ user, onOpenAuth }: MaintenanceSect
                   id="maint-submit-btn"
                   type="submit"
                   disabled={formLoading}
-                  className="w-full mt-6 py-3.5 bg-orange-600 hover:bg-orange-700 disabled:bg-orange-850 text-white font-bold rounded-xl transition-colors cursor-pointer text-sm"
+                  className="w-full mt-6 py-3.5 bg-gold-500 hover:bg-gold-600 disabled:bg-gold-800 text-navy-950 font-black rounded-xl transition-colors cursor-pointer text-sm"
                 >
                   {formLoading ? '제출 중...' : user ? '정비 예약 등록하기' : '로그인 후 예약하기'}
                 </button>
@@ -278,13 +278,13 @@ export default function MaintenanceSection({ user, onOpenAuth }: MaintenanceSect
           </div>
 
           {/* Real Chatbot & FAQ Helper */}
-          <div className="lg:col-span-6 bg-white border border-slate-200 rounded-3xl p-6 flex flex-col justify-between shadow-sm h-[600px]">
+          <div className="lg:col-span-6 bg-navy-950 border border-navy-800 rounded-3xl p-6 flex flex-col justify-between shadow-xl h-[600px]">
             {/* Header */}
-            <div className="flex items-center space-x-2.5 border-b border-slate-100 pb-4 shrink-0">
-              <MessageSquare className="w-5.5 h-5.5 text-orange-600" />
+            <div className="flex items-center space-x-2.5 border-b border-navy-850 pb-4 shrink-0">
+              <MessageSquare className="w-5.5 h-5.5 text-gold-500" />
               <div>
-                <h3 className="text-sm font-bold text-slate-900">LAVACORE 실시간 AI 챗봇</h3>
-                <p className="text-[10px] text-green-600 font-mono">● LIVE CHATBOT ONLINE</p>
+                <h3 className="text-sm font-bold text-white">LAVACORE 실시간 AI 챗봇</h3>
+                <p className="text-[10px] text-green-450 font-mono">● LIVE CHATBOT ONLINE</p>
               </div>
             </div>
 
@@ -298,8 +298,8 @@ export default function MaintenanceSection({ user, onOpenAuth }: MaintenanceSect
                   <div
                     className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-xs sm:text-sm leading-relaxed shadow-sm ${
                       msg.sender === 'user'
-                        ? 'bg-orange-600 text-white rounded-tr-none'
-                        : 'bg-slate-100 text-slate-800 border border-slate-200/65 rounded-tl-none'
+                        ? 'bg-gold-500 text-navy-950 font-bold rounded-tr-none'
+                        : 'bg-navy-900 text-slate-200 border border-navy-800 rounded-tl-none'
                     }`}
                   >
                     {msg.text}
@@ -310,9 +310,9 @@ export default function MaintenanceSection({ user, onOpenAuth }: MaintenanceSect
             </div>
 
             {/* FAQ helper clickers */}
-            <div className="border-t border-slate-100 pt-3 pb-2 shrink-0">
+            <div className="border-t border-navy-850 pt-3 pb-2 shrink-0">
               <p className="text-[10px] uppercase font-bold tracking-wider text-slate-400 flex items-center gap-1 mb-2">
-                <HelpCircle className="w-3.5 h-3.5 text-orange-600" />
+                <HelpCircle className="w-3.5 h-3.5 text-gold-500" />
                 자주 묻는 질문 (클릭 시 챗봇과 즉시 상담)
               </p>
               <div className="flex flex-wrap gap-1.5 max-h-[90px] overflow-y-auto">
@@ -321,7 +321,7 @@ export default function MaintenanceSection({ user, onOpenAuth }: MaintenanceSect
                     key={idx}
                     id={`faq-btn-${idx}`}
                     onClick={() => handleSendMessage(item.q)}
-                    className="text-[11px] bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-full px-3 py-1 text-slate-600 hover:text-slate-900 transition-colors text-left cursor-pointer truncate max-w-full"
+                    className="text-[11px] bg-navy-900 hover:bg-navy-850 border border-navy-800 rounded-full px-3 py-1 text-slate-300 hover:text-white transition-colors text-left cursor-pointer truncate max-w-full"
                     title={item.q}
                   >
                     {item.q}
@@ -331,7 +331,7 @@ export default function MaintenanceSection({ user, onOpenAuth }: MaintenanceSect
             </div>
 
             {/* Input Form */}
-            <div className="border-t border-slate-100 pt-3 shrink-0 flex items-center gap-2">
+            <div className="border-t border-navy-850 pt-3 shrink-0 flex items-center gap-2">
               <input
                 id="chatbot-text-input"
                 type="text"
@@ -341,14 +341,14 @@ export default function MaintenanceSection({ user, onOpenAuth }: MaintenanceSect
                 onKeyDown={(e) => {
                   if (e.key === 'Enter') handleSendMessage(inputMessage);
                 }}
-                className="flex-1 bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-4 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-orange-500 transition-colors"
+                className="flex-1 bg-navy-900 border border-navy-850 rounded-xl py-2.5 px-4 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-gold-500 transition-colors"
               />
               <button
                 id="chatbot-send-btn"
                 onClick={() => handleSendMessage(inputMessage)}
-                className="p-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white transition-colors cursor-pointer"
+                className="p-2.5 rounded-xl bg-gold-500 hover:bg-gold-600 text-navy-950 transition-colors cursor-pointer"
               >
-                <Send className="w-4.5 h-4.5" />
+                <Send className="w-4.5 h-4.5 font-bold" />
               </button>
             </div>
           </div>

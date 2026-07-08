@@ -98,31 +98,31 @@ export default function AuthModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md animate-fade-in">
-      <div className="relative w-full max-w-md bg-white border border-slate-200 rounded-2xl shadow-xl p-6 sm:p-8 text-slate-800">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/70 backdrop-blur-md animate-fade-in">
+      <div className="relative w-full max-w-md bg-navy-950 border border-navy-800 rounded-2xl shadow-2xl p-6 sm:p-8 text-slate-200">
         {/* Close Button */}
         <button
           id="auth-modal-close-btn"
           onClick={onClose}
-          className="absolute top-4 right-4 p-1.5 text-slate-400 hover:text-slate-950 bg-slate-50 hover:bg-slate-100 rounded-lg transition-colors"
+          className="absolute top-4 right-4 p-1.5 text-slate-400 hover:text-white bg-navy-900 hover:bg-navy-850 border border-navy-850 rounded-lg transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Modal Title */}
         <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold tracking-tight text-slate-900 mb-2 font-sans">
+          <h2 className="text-2xl font-black tracking-wider text-gold-500 mb-2 font-sans">
             LAVACORE MOBILITY
           </h2>
-          <p className="text-slate-500 text-sm">
+          <p className="text-slate-400 text-sm">
             {isSignUp ? '간편하게 회원가입하고 서비스를 이용해 보세요' : '로그인하여 고품격 모빌리티 솔루션을 경험하세요'}
           </p>
         </div>
 
         {/* Error Alert */}
         {error && (
-          <div className="flex items-start gap-2.5 p-3.5 bg-red-50 border border-red-100 rounded-xl mb-5 text-red-600 text-sm">
-            <AlertCircle className="w-5 h-5 shrink-0 mt-0.5 text-red-500" />
+          <div className="flex items-start gap-2.5 p-3.5 bg-red-500/10 border border-red-500/20 rounded-xl mb-5 text-red-400 text-sm">
+            <AlertCircle className="w-5 h-5 shrink-0 mt-0.5 text-red-450" />
             <span>{error}</span>
           </div>
         )}
@@ -131,9 +131,9 @@ export default function AuthModal({
         <form onSubmit={handleEmailAuth} className="space-y-4">
           {isSignUp && (
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5">이름</label>
+              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">이름</label>
               <div className="relative">
-                <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
                 <input
                   id="signup-name-input"
                   type="text"
@@ -141,16 +141,16 @@ export default function AuthModal({
                   placeholder="홍길동"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 pl-11 pr-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-orange-500 transition-colors"
+                  className="w-full bg-navy-900 border border-navy-850 rounded-xl py-3 pl-11 pr-4 text-white placeholder-slate-500 focus:outline-none focus:border-gold-500 transition-colors"
                 />
               </div>
             </div>
           )}
 
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5">이메일 주소</label>
+            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">이메일 주소</label>
             <div className="relative">
-              <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
               <input
                 id="auth-email-input"
                 type="email"
@@ -158,15 +158,15 @@ export default function AuthModal({
                 placeholder="example@lavacore.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 pl-11 pr-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-orange-500 transition-colors"
+                className="w-full bg-navy-900 border border-navy-850 rounded-xl py-3 pl-11 pr-4 text-white placeholder-slate-500 focus:outline-none focus:border-gold-500 transition-colors"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5">비밀번호</label>
+            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">비밀번호</label>
             <div className="relative">
-              <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
               <input
                 id="auth-password-input"
                 type="password"
@@ -174,7 +174,7 @@ export default function AuthModal({
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 pl-11 pr-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-orange-500 transition-colors"
+                className="w-full bg-navy-900 border border-navy-850 rounded-xl py-3 pl-11 pr-4 text-white placeholder-slate-500 focus:outline-none focus:border-gold-500 transition-colors"
               />
             </div>
           </div>
@@ -183,7 +183,7 @@ export default function AuthModal({
             id="auth-submit-btn"
             type="submit"
             disabled={loading}
-            className="w-full bg-orange-600 hover:bg-orange-700 disabled:bg-orange-800 text-white font-semibold py-3.5 px-4 rounded-xl shadow-md shadow-orange-500/10 transition-colors cursor-pointer text-sm"
+            className="w-full bg-gold-500 hover:bg-gold-600 disabled:bg-gold-850 text-navy-950 font-black py-3.5 px-4 rounded-xl shadow-md shadow-gold-500/10 transition-colors cursor-pointer text-sm animate-pulse-subtle"
           >
             {loading ? '처리 중...' : isSignUp ? '이메일 회원가입' : '이메일 로그인'}
           </button>
@@ -192,9 +192,9 @@ export default function AuthModal({
         {/* Divider */}
         <div className="relative my-6 text-center">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-slate-200"></div>
+            <div className="w-full border-t border-navy-850"></div>
           </div>
-          <span className="relative bg-white px-3 text-xs uppercase tracking-wider text-slate-400">
+          <span className="relative bg-navy-950 px-3 text-xs uppercase tracking-wider text-slate-500">
             또는
           </span>
         </div>
@@ -204,7 +204,7 @@ export default function AuthModal({
           id="google-signin-btn"
           onClick={handleGoogleAuth}
           disabled={loading}
-          className="w-full flex items-center justify-center space-x-3.5 bg-slate-50 hover:bg-slate-100 text-slate-800 border border-slate-200 font-semibold py-3.5 px-4 rounded-xl transition-colors shadow-sm cursor-pointer text-sm"
+          className="w-full flex items-center justify-center space-x-3.5 bg-navy-900 hover:bg-navy-850 text-slate-200 border border-navy-850 font-semibold py-3.5 px-4 rounded-xl transition-colors shadow-sm cursor-pointer text-sm"
         >
           <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24">
             <path
@@ -229,13 +229,13 @@ export default function AuthModal({
 
         {/* Toggle Sign up / Log in */}
         <div className="text-center mt-6 text-sm">
-          <span className="text-slate-400">
+          <span className="text-slate-450">
             {isSignUp ? '이미 계정이 있으신가요?' : '아직 계정이 없으신가요?'}
           </span>{' '}
           <button
             id="auth-toggle-mode-btn"
             onClick={() => setIsSignUp(!isSignUp)}
-            className="text-orange-600 hover:text-orange-700 font-semibold underline underline-offset-4 cursor-pointer"
+            className="text-gold-500 hover:text-gold-400 font-bold underline underline-offset-4 cursor-pointer"
           >
             {isSignUp ? '로그인하기' : '회원가입하기'}
           </button>
